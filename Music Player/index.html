@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <!-- Import Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    /* Styles for Night Mode */
+    body.dark-mode {
+      background-color: #352d39;
+      color:#fff;
+    }
+    .card.dark-mode {
+      background-color: #251f27;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+    <!-- Attractive heading -->
+  <h1 class="center-align">Music Player Created By Suraj Sahani</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card">
+            <div class="card-image">
+                <img src="https://media.tenor.com/_ghn0Sr3fh0AAAAC/music.gif">
+                <!-- <img src="https://cdn.wallpapersafari.com/50/13/uRekZP.gif"> -->
+                <!-- <img src="https://lh3.googleusercontent.com/_hIJWZ8fVPbZmkkROVzZQCj0eUcrh-LZPjOhdmfX8mmCIJnoWkq7RRZxryLzeKi0m5E" alt="music image"> -->
+
+                <a id="play-button" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">play_arrow</i></a>
+              </div>
+          <div class="card-content center-align">
+            <span class="card-title">Tujhe Apna Samjhna Wala</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <div class="switch">
+          <label>
+            Light
+            <input type="checkbox" id="night-mode-toggle">
+            <span class="lever"></span>
+            Dark
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Import jQuery and Materialize JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var audio = new Audio('love.aac');
+      var playButton = document.getElementById('play-button');
+      playButton.addEventListener('click', function() {
+        if (audio.paused) {
+          audio.play();
+          playButton.innerHTML = '<i class="material-icons">pause</i>';
+        } else {
+          audio.pause();
+          playButton.innerHTML = '<i class="material-icons">play_arrow</i>';
+        }
+      });
+
+      var nightModeToggle = document.getElementById('night-mode-toggle');
+      nightModeToggle.addEventListener('change', function() {
+        if (this.checked) {
+          $('body').addClass('dark-mode');
+          $('.card').addClass('dark-mode');
+        } else {
+          $('body').removeClass('dark-mode');
+          $('.card').removeClass('dark-mode');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
